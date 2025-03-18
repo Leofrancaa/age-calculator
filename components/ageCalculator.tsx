@@ -1,6 +1,8 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
+import iconArrow from "@/public/icon-arrow.svg";
 
 interface AgeResult {
   years: number | null;
@@ -18,6 +20,7 @@ export default function AgeCalculator() {
     days: null,
   });
   const [error, setError] = useState("");
+  const [rotate, setRotate] = useState(false);
 
   const validateDate = (): boolean => {
     const dayNum = parseInt(day);
@@ -50,6 +53,8 @@ export default function AgeCalculator() {
 
   const calculateAge = () => {
     if (!validateDate()) return;
+
+    setRotate(!rotate);
 
     const birthDate = new Date(
       parseInt(year),
@@ -90,7 +95,7 @@ export default function AgeCalculator() {
             max="31"
             value={day}
             onChange={(e) => setDay(e.target.value.slice(0, 2))}
-            className="w-[8vw] p-2 border border-gray-200 rounded-md font-bold text-xl text-black pl-4"
+            className="w-[8vw] p-2 border border-gray-200 rounded-md font-bold text-xl text-[hsl(0,0%,8%)] pl-4"
             placeholder="DD"
             required
           />
@@ -106,7 +111,7 @@ export default function AgeCalculator() {
             max="12"
             value={month}
             onChange={(e) => setMonth(e.target.value.slice(0, 2))}
-            className="w-[8vw] p-2 border border-gray-200 rounded-md font-bold text-xl text-black pl-4"
+            className="w-[8vw] p-2 border border-gray-200 rounded-md font-bold text-xl text-[hsl(0,0%,8%)] pl-4"
             placeholder="MM"
             required
           />
@@ -122,7 +127,7 @@ export default function AgeCalculator() {
             max={new Date().getFullYear()}
             value={year}
             onChange={(e) => setYear(e.target.value.slice(0, 4))}
-            className="w-[8vw] p-2 border border-gray-200 rounded-md font-bold text-xl text-black pl-4"
+            className="w-[8vw] p-2 border border-gray-200 rounded-md font-bold text-xl text-[hsl(0,0%,8%)] pl-4"
             placeholder="AAAA"
             required
           />
@@ -136,29 +141,54 @@ export default function AgeCalculator() {
         <button
           onClick={calculateAge}
           disabled={!isFormValid}
-          className={`w-16 h-16 py-2 px-4 rounded-full text-white ${
+          className={`w-16 h-16 px-[14px] flex items-center justify-center rounded-[50%] text-white cursor-pointer ${
             isFormValid
-              ? "bg-blue-500 hover:bg-blue-600"
+              ? "bg-[hsl(259,100%,65%)] hover:bg-[hsl(259,100%,65%)]"
               : "bg-gray-300 cursor-not-allowed"
           }`}
         >
-          Ca
+          <Image
+            src={iconArrow}
+            alt=""
+            className={`transform transition-transform duration-300 ${
+              rotate ? "rotate-0" : "rotate-180"
+            }`}
+          />
         </button>
       </div>
 
-      {result.years !== null && (
-        <div className="text-2xl font-bold text-fuchsia-600 text-[60px]">
-          <p>
-            {result.years} <span className="text-black">years</span>
-          </p>
-          <p>
-            {result.months} <span className="text-black">months</span>
-          </p>
-          <p>
-            {result.days} <span className="text-black">days</span>
-          </p>
-        </div>
-      )}
+      <div className="text-2xl font-bold text-[hsl(259,100%,65%)] text-[60px]">
+        <p className="text-black">
+          <span
+            className={`text-[hsl(259,100%,65%)] text-7xl font-bold ${
+              result.years === null ? "tracking-widest" : "tracking-normal"
+            } `}
+          >
+            {result.years !== null ? result.years : "--"}
+          </span>{" "}
+          years
+        </p>
+        <p className="text-black">
+          <span
+            className={`text-[hsl(259,100%,65%)] text-7xl font-bold ${
+              result.years === null ? "tracking-widest" : "tracking-normal"
+            } `}
+          >
+            {result.months !== null ? result.months : "--"}
+          </span>{" "}
+          months
+        </p>
+        <p className="text-black">
+          <span
+            className={`text-[hsl(259,100%,65%)] text-7xl font-bold ${
+              result.years === null ? "tracking-widest" : "tracking-normal"
+            } `}
+          >
+            {result.days !== null ? result.days : "--"}
+          </span>{" "}
+          days
+        </p>
+      </div>
     </div>
   );
 }
