@@ -84,7 +84,7 @@ export default function AgeCalculator() {
 
   return (
     <div className="bg-white rounded-t-2xl shadow-sm rounded-bl-2xl rounded-br-[30%] lg:p-12 w-[95vw] lg:w-[40vw] h-[70vh] lg:h-[65vh] flex justify-center items-center lg:items-baseline flex-col">
-      <div className="flex gap-8 lg:gap-6 w-[60vw] lg:w-auto justify-center">
+      <div className="flex gap-8 lg:gap-6 w-[50vw] lg:w-auto justify-center">
         <div>
           <label className="block text-sm font-bold text-gray-700 mb-2 uppercase">
             Day
@@ -158,7 +158,7 @@ export default function AgeCalculator() {
         <div className="h-[2px] lg:w-full w-[42%] bg-gray-200 lg:hidden"></div>
       </div>
 
-      <div className="text-sm lg:text-2xl font-bold text-[hsl(259,100%,65%)] text-[60px]">
+      <div className="italic text-[45px] font-bold text-[hsl(259,100%,65%)] lg:text-[60px]">
         <p className="text-black">
           <span
             className={`text-[hsl(259,100%,65%)] lg:text-7xl font-bold ${
@@ -179,9 +179,9 @@ export default function AgeCalculator() {
           </span>{" "}
           months
         </p>
-        <p className="text-black">
+        <p className="text-black text-[45px] lg:text-[60px]">
           <span
-            className={`text-[hsl(259,100%,65%)] text-7xl font-bold ${
+            className={`text-[hsl(259,100%,65%)] lg:text-7xl text-5xl font-bold ${
               result.years === null ? "tracking-widest" : "tracking-normal"
             } `}
           >
