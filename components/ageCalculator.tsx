@@ -83,8 +83,8 @@ export default function AgeCalculator() {
   const isFormValid = day && month && year;
 
   return (
-    <div className="bg-white rounded-t-2xl shadow-sm rounded-bl-2xl rounded-br-[30%] lg:p-12 w-[80vw] lg:w-[40vw] h-[50vh] lg:h-[65vh] flex justify-center items-center lg:items-baseline flex-col">
-      <div className="flex gap-6 ">
+    <div className="bg-white rounded-t-2xl shadow-sm rounded-bl-2xl rounded-br-[30%] lg:p-12 w-[95vw] lg:w-[40vw] h-[70vh] lg:h-[65vh] flex justify-center items-center lg:items-baseline flex-col">
+      <div className="flex gap-6 w-[60vw] lg:w-auto justify-center">
         <div>
           <label className="block text-sm font-bold text-gray-700 mb-2 uppercase">
             Day
